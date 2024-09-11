@@ -9,6 +9,7 @@
 // @match        *://chatgpt.com/*
 // @grant        none
 // @homepageURL  https://github.com/ce603/chatgpt-keyboardshortcuts
+// @downloadURL https://raw.githubusercontent.com/ce603/chatgpt-keyboardshortcuts/main/tampermonkey.js
 // ==/UserScript==
 
 (function() {

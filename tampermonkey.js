@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Delete ChatGPT Threads Keyboard Shortcut (ctrl + `)
+// @name         Add Keyboard Shortcuts to ChatGPT (Delete Chat, Next/Previous Chat)
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
-// @description  Automatically delete the active thread in ChatGPT and open the next one using Ctrl + ` shortcut.
-// @author       Your Name
+// @version      0.1.1
+// @description  Delete the current thread using ctrl + `; Move to the next thread with ctrl + DownArrow; Move to the next thread with ctrl + UpArrow.
+// @author       Casey Eyring
 // @match        *://chat.openai.com/*
 // @match        *://www.chatgpt.com/*
 // @match        *://chatgpt.com/*
@@ -12,7 +12,23 @@
 
 (function() {
     'use strict';
-    // test comment - remove me
+
+    // Define keyboard shortcuts as objects with modifier and key
+    const deleteThreadShortcut = {
+        modifierKey: 'ctrlKey', // Can be 'ctrlKey', 'shiftKey', 'altKey', or 'metaKey'
+        triggerKey: '`'         // The key to trigger the delete action (backtick in this case)
+    };
+
+    // You can later define more shortcuts for other actions
+    const nextThreadShortcut = {
+        modifierKey: 'ctrlKey', // Example for next thread
+        triggerKey: 'ArrowDown' // Example: using the down arrow for moving to the next thread
+    };
+
+    const previousThreadShortcut = {
+        modifierKey: 'ctrlKey', // Example for previous thread
+        triggerKey: 'ArrowUp'   // Example: using the up arrow for moving to the previous thread
+    };
 
     // Function to delete the active thread
     function deleteActiveThread() {
@@ -123,14 +139,28 @@
         }
     }
 
-    // Function to add a listener for the keyboard shortcut (Ctrl + `)
+    // Function to add a listener for keyboard shortcuts
     function addShortcutListener() {
         document.addEventListener('keydown', function(event) {
-            // Checking for "Ctrl + ` " (backtick/grave accent) as the keyboard shortcut
-            if (event.ctrlKey && event.key === '`') {
+            // Check if the delete thread shortcut is pressed
+            if (event[deleteThreadShortcut.modifierKey] && event.key === deleteThreadShortcut.triggerKey) {
                 event.preventDefault(); // Prevent default behavior
-                console.log("Ctrl + ` pressed!");
+                console.log(`Shortcut pressed: ${deleteThreadShortcut.modifierKey} + ${deleteThreadShortcut.triggerKey}`);
                 deleteActiveThread(); // Delete the active thread and open the next one
+            }
+
+            // Later, you can add more shortcut checks for next/previous thread
+            if (event[nextThreadShortcut.modifierKey] && event.key === nextThreadShortcut.triggerKey) {
+                event.preventDefault();
+                console.log(`Shortcut pressed: ${nextThreadShortcut.modifierKey} + ${nextThreadShortcut.triggerKey}`);
+                openNextThread();
+            }
+
+            // Check for previous thread shortcut (you can implement the actual logic later)
+            if (event[previousThreadShortcut.modifierKey] && event.key === previousThreadShortcut.triggerKey) {
+                event.preventDefault();
+                console.log(`Shortcut pressed: ${previousThreadShortcut.modifierKey} + ${previousThreadShortcut.triggerKey}`);
+                // Add logic for opening the previous thread here
             }
         });
     }

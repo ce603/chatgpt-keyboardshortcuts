@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         Add Keyboard Shortcuts to ChatGPT (Delete Chat, Next/Previous Chat)
-// @namespace    http://tampermonkey.net/
-// @version      0.1.1
+// @namespace    https://caseyeyring.com/
+// @version      0.1.2
 // @description  Delete the current thread using ctrl + `; Move to the next thread with ctrl + DownArrow; Move to the next thread with ctrl + UpArrow.
 // @author       Casey Eyring
 // @match        *://chat.openai.com/*
 // @match        *://www.chatgpt.com/*
 // @match        *://chatgpt.com/*
 // @grant        none
+// @homepageURL  https://github.com/ce603/chatgpt-keyboardshortcuts
 // ==/UserScript==
 
 (function() {

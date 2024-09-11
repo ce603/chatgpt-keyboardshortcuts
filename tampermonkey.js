@@ -12,6 +12,7 @@
 
 (function() {
     'use strict';
+    // test comment - remove me
 
     // Function to delete the active thread
     function deleteActiveThread() {

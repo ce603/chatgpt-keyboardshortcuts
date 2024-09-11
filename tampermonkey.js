@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Adds a keyboard shortcut (ctrl + `) to delete the active ChatGPT Threads 
+// @name         Delete ChatGPT Threads Keyboard Shortcut (ctrl + `)
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.0.1
 // @description  Automatically delete the active thread in ChatGPT and open the next one using Ctrl + ` shortcut.
 // @author       Your Name
 // @match        *://chat.openai.com/*
